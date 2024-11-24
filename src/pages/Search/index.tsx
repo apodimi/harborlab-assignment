@@ -17,7 +17,7 @@ export const Search = () => {
   const [searchTerm, setSearchTerm] = useState<string>("");
   const [debouncedSearchTerm, setDebouncedSearchTerm] = useState<string>("");
   const [state, dispatch] = useReducer(savedArticlesReducer, {
-    savedArticles: [],
+    savedArticles: JSON.parse(localStorage.getItem("savedArticles") || "[]"),
   });
 
   const debouncedSetSearchTerm = useCallback(
@@ -70,7 +70,7 @@ export const Search = () => {
           </div>
         )}
 
-        <NoResult hidden={isLoading && data && data.length > 0} />
+        <NoResult hidden={data && data.length !== 0} />
       </div>
       <h2 className="text-xl font-semibold mb-2 pt-10">Saved Articles</h2>
       {state.savedArticles.map((article, index) => (
