@@ -1,50 +1,87 @@
-# React + TypeScript + Vite
+## Project Structure
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+The project structure is as follows:
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+```
+├── public/
+├── src/
+│   ├── api/
+│   │   └── search.ts
+│   ├── assets/
+│   │   └── react.svg
+│   ├── components/
+│   │   ├── ResultCard
+│   │   ├── SavedArticleCard
+│   │   ├── SearchInput
+│   │   └── CircularLoader
+│   ├── hooks/
+│   │   └── useSearch.tsx
+│   ├── pages
+│   │   └── Search
+│   │       ├── index.tsx
+│   │       └── components
+│   │           ├──ErrosMessage.tsx
+│   │           └── NoResult.tsx
+│   ├── reducers/
+│   │   └── savedArticlesReducer.ts
+│   ├── types/
+│   │   └── searchTypes.ts
+│   └── utils/
+│       └── highlightHelper.ts
+├── App.tsx
+├── main.tsx
+└── ...
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+### api folder
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+The API folder contains all the requests that can be performed by the application. For this specific project, the `search.ts` file is included, which handles search functionality.
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+### components folder
+
+In the `components` folder, all the components that can be used in different parts of the application are included.
+
+### hooks folder
+
+The `hooks` folder contains all the hooks that will be used in the application. In this case, it includes the hooks for managing search functionality and returning various data.
+
+### pages folder
+
+The `pages` folder contains all the pages of our application. In this case, it includes the search page as well as any components needed by that specific page.
+
+### reducers folder
+
+The `reducers` folder contains the reducers used for state management, in this case, for the stored articles.
+
+### types folder
+
+The `types` folder contains all the TypeScript types needed within the application.
+
+### utils folder
+
+The `utils` folder contains functions that are useful for managing and formatting data.
+
+## Installation
+
+To install and run the project locally, follow these steps:
+
+1. **Clone the repository:**
+
+```sh
+git clone https://github.com/apodimi/harborlab-assignment.git
+cd harborlab-assignment
+```
+
+2. **Install dependencies:**
+
+Make sure you have [Node.js](https://nodejs.org/) installed, then run:
+
+```sh
+npm install
+```
+
+3. **Run the development server:**
+
+```sh
+npm run dev
 ```

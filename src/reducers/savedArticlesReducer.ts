@@ -22,7 +22,7 @@ export const savedArticlesReducer = (
   action: Action
 ): State => {
   switch (action.type) {
-    case "SAVE_ARTICLE": {
+    case SavedArticlesActionTypes.SAVE_ARTICLE: {
       if (
         state.savedArticles.some(
           (article) => article.story_id === action.payload.story_id
@@ -41,7 +41,7 @@ export const savedArticlesReducer = (
       return newSavedArticleState;
     }
 
-    case "REMOVE_ARTICLE": {
+    case SavedArticlesActionTypes.REMOVE_ARTICLE: {
       const updatedState = {
         savedArticles: state.savedArticles.filter(
           (article) => article.story_id !== action.payload.story_id
